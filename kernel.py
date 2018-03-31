@@ -5,7 +5,7 @@ def pdist(x, y):
     n = x.shape[0]
     xx = F.broadcast_to(F.square(x), (n, n)).T
     xy = F.matmul(y, x, transb=True)
-    yy = F.broadcast_to(F.square(y), (n, n)).T
+    yy = F.broadcast_to(F.square(y), (n, n))
     return xx - 2 * xy + yy
 
 
