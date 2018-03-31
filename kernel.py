@@ -1,3 +1,4 @@
+import numpy as np
 import chainer.functions as F
 
 
@@ -10,4 +11,10 @@ def pdist(x, y):
 
 
 def rbf(x):
-    pass
+    dist = pdist(x, x.data)
+    m = np.median(dist.data)  # cut graph
+    w = m / np.log(x.shape[0])
+
+    res = F.exp(-dist/w/2)
+
+    return res
