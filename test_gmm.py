@@ -28,3 +28,11 @@ def test_logp():
     model = GMM()
     logp = model.logp(x)
     assert len(logp) == model.n_particle
+
+
+def test_call():
+    np.random.seed(215)
+    x = _sample()
+    model = GMM()
+    loss = model(x)
+    assert loss.shape == ()
