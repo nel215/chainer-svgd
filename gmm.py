@@ -10,19 +10,16 @@ class GMM(Chain):
         self.n_cluster = n_cluster
         self.n_particle = n_particle
         self._initialized = False
+        with self.init_scope():
+            self.w = Parameter(initializers.Normal())
+            self.mean = Parameter(initializers.Normal())
+            self.ln_var = Parameter(initializers.Normal())
 
     def _initialize(self, x):
         batch_size, d = x.shape
-        with self.init_scope():
-            self.w = Parameter(
-                initializers.Normal(),
-                shape=(self.n_particle, self.n_cluster))
-            self.mean = Parameter(
-                initializers.Normal(),
-                shape=(self.n_particle, self.n_cluster, d))
-            self.ln_var = Parameter(
-                initializers.Normal(),
-                shape=(self.n_particle, self.n_cluster, d))
+        self.w.initialize((self.n_particle, self.n_cluster))
+        self.mean.initialize((self.n_particle, self.n_cluster, d))
+        self.ln_var.initialize((self.n_particle, self.n_cluster, d))
         self._initialized = True
 
     def logp(self, x):
