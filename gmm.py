@@ -1,3 +1,4 @@
+import chainer
 import chainer.functions as F
 from chainer import Chain, Parameter, initializers
 from kernel import rbf
@@ -56,4 +57,10 @@ class GMM(Chain):
         loss = 0
         for p in range(self.n_particle):
             loss += ker.data[p] * logp[p] + ker[p]
+
+        loss /= self.n_particle * x.shape[0]
+        chainer.report(
+            {'loss': -loss, 'logp': sum(logp) / self.n_particle / x.shape[0]},
+            observer=self,
+        )
         return -loss
