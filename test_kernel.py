@@ -24,6 +24,6 @@ def test_rbf():
 
     res = rbf(x)
     np.testing.assert_allclose(res.data, [
-        [1, 0.5],
-        [0.5, 1],
+        [1.0, 0.111111111],
+        [0.111111111, 1.0],
     ])
