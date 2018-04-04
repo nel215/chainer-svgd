@@ -1,3 +1,6 @@
 __pycache__
 .python-version
 .pytest_cache
+notebook/.ipynb_checkpoints/*
+notebook/result/*
+result/*
