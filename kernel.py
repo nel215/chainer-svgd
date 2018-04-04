@@ -13,8 +13,8 @@ def pdist(x, y):
 def rbf(x):
     dist = pdist(x, x.data)  # cut graph
     m = np.median(dist.data)
-    w = m / np.log(x.shape[0])
+    h = m / np.log(x.shape[0]+1)
 
-    res = F.exp(-dist/w/2)
+    res = F.exp(-dist/h)
 
     return res
