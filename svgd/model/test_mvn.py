@@ -1,5 +1,5 @@
 import numpy as np
-from multivariate_normal import MVN
+from svgd.model import MVN
 
 
 def test_logp():

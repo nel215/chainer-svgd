@@ -2,7 +2,7 @@ import numpy as np
 import chainer
 import chainer.functions as F
 from chainer import Chain, Parameter
-from kernel import rbf
+from svgd.kernel import rbf
 
 
 class MVN(Chain):

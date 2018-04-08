@@ -1,7 +1,7 @@
 import numpy as np
 import chainer.functions as F
 from chainer import Variable
-from kernel import pdist, rbf
+from svgd.kernel import pdist, rbf
 
 
 def test_pdist():
